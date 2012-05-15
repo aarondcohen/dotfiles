@@ -1,2 +1,20 @@
+[core]
+#	excludesfile = ~/.gitignore
+	pager        = less
+[user]
+	name = Aaron Cohen
+	email = aarondcohen@gmail.com
+[color]
+	all          = auto
+	pager        = true
+	diff         = auto
+	interactive  = auto
+	status       = auto
+	branch       = true
+[color "diff"]
+	meta         = blue bold
+	frag         = magenta bold
+	old          = red
+	new          = green
 [push]
 	default = current

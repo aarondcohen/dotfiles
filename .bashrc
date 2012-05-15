@@ -18,10 +18,17 @@ shopt -s histappend
 # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 # a case would tend to support setf rather than setaf.)
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	PS1='[\[\033[01;32m\]\u@\h\[\033[00m\]][\[\033[01;34m\]\w\[\033[00m\]] '
+	PS1='[\[\033[01;32m\]\u@$HOSTNAME\[\033[00m\]][\[\033[01;34m\]\w\[\033[00m\]]'
 else
-	PS1='[\u@\h][\w] '
+	PS1='[\u@$HOSTNAME][\w]'
 fi
+
+if [ -f "$HOME/bin/git-completion.bash" ]; then
+	. "$HOME/bin/git-completion.bash"
+	PS1=$PS1'$(if __git_ps1 > /dev/null 2>&1; then __git_ps1 "[%s]"; fi;)'
+fi
+
+PS1=$PS1' '
 
 # User specific aliases and functions
 if [ -x /usr/bin/dircolors ]; then
@@ -37,6 +44,7 @@ else
 	alias ls='ls -px --group-directories-first'
 fi
 
+# Aliases
 alias vi='vim'
 alias movie-info='mplayer -vo null -nosound -identify -frames 0'
 
