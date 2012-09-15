@@ -122,18 +122,21 @@ function ToggleComment()
   let comment_start = '#'
   let comment_end   = ''
 
+  if &filetype == 'css'
+    let comment_start = '\/\* '
+    let comment_end   = ' \*\/'
+  endif
+  if &filetype == 'haskell'
+    let comment_start = '--'
+  endif
+  if &filetype == 'javascript'
+    let comment_start = '\/\/'
+  endif
   if &filetype == 'sql'
     let comment_start = '--'
   endif
   if &filetype == 'vim'
     let comment_start = '"'
-  endif
-  if &filetype == 'css'
-    let comment_start = '\/\* '
-    let comment_end   = ' \*\/'
-  endif
-  if &filetype == 'javascript'
-    let comment_start = '\/\/'
   endif
 
   " if the comment start is at the beginning of the line and isn't followed
