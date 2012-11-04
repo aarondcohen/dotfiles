@@ -5,6 +5,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
+	source ~/perl5/perlbrew/etc/bashrc
+fi
+
 # History Options
 HISTCONTROL=ignoredups:ignoreboth:ignorespace
 HISTSIZE=1000
@@ -75,4 +79,3 @@ alias movie-info='mplayer -vo null -nosound -identify -frames 0'
 export GIT_EDITOR=vi
 export GIT_PAGER='less -SFR'
 
-source ~/perl5/perlbrew/etc/bashrc
