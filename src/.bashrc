@@ -76,6 +76,7 @@ alias vi='vim'
 alias movie-info='mplayer -vo null -nosound -identify -frames 0'
 
 # Environment Variables for various programs
-export GIT_EDITOR=vi
+export GIT_EDITOR=vim
 export GIT_PAGER='less -SFR'
+export LESS=''
 
