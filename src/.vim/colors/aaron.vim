@@ -1,10 +1,9 @@
 set background=dark
 hi clear
 if exists("syntax_on")
-    syntax reset
+	syntax reset
 endif
 let g:colors_name = "aaron"
-
 
 if &t_Co == '256'
 
@@ -26,10 +25,10 @@ if &t_Co == '256'
 	hi Variable  cterm=none ctermfg=39 " 228 " White
 
 	" Vim Features
-	hi DiffAdd    cterm=none ctermfg=Black ctermbg=Lightgreen 
+	hi DiffAdd    cterm=none ctermfg=Black ctermbg=Lightgreen
 	hi DiffChange cterm=none ctermfg=Black ctermbg=Magenta
 	hi DiffDelete cterm=none ctermfg=Black ctermbg=Red
-	hi DiffText   cterm=none ctermfg=Black ctermbg=Lightgreen 
+	hi DiffText   cterm=none ctermfg=Black ctermbg=Lightgreen
 
 else
 	hi Normal     cterm=none ctermbg=none ctermfg=White
