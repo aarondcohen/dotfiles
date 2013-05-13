@@ -72,8 +72,9 @@ extract () {
 }
 
 # Aliases
-alias vi='vim'
+alias cad='cat > /dev/null'
 alias movie-info='mplayer -vo null -nosound -identify -frames 0'
+alias vi='echo "Save the headache and type vim"'
 
 # Environment Variables for various programs
 export GIT_EDITOR=vim
