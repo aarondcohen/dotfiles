@@ -85,12 +85,12 @@ endfunc
 
 " remap tab to autocomplete words when not at the beginning of a line
 function InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k'
+		return "\<tab>"
+	else
+		return "\<c-p>"
+	endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
@@ -101,17 +101,17 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 highlight QuestionableWhitespace ctermbg=green guibg=green
 autocmd BufNewFile,BufRead * call HighlightWhitespace()
 function HighlightWhitespace()
-  if &expandtab
-    " highlight tabs not at the beginning of the line (but allow # for comments and % for mason),
-    " and trailing whitespace not followed by the cursor
-    " (maybe think about highlighting leading spaces not in denominations of tabstop?)
-    match QuestionableWhitespace /\(^[%#]\?\t*\)\@<!\t\|[ \t]\+\(\%#\)\@!$/
-  else
-    " highlight any leading spaces (TODO: ignore spaces in formatted assignment statements),
-    " tabs not at the beginning of the line (but allow # for comments and % for mason),
-    " and trailing whitespace not followed by the cursor
-    match QuestionableWhitespace /^ \+\|\(^[%#]\?\t*\)\@<!\t\|[ \t]\+\(\%#\)\@!$/
-  endif
+	if &expandtab
+		" highlight tabs not at the beginning of the line (but allow # for comments and % for mason),
+		" and trailing whitespace not followed by the cursor
+		" (maybe think about highlighting leading spaces not in denominations of tabstop?)
+		match QuestionableWhitespace /\(^[%#]\?\t*\)\@<!\t\|[ \t]\+\(\%#\)\@!$/
+	else
+		" highlight any leading spaces (TODO: ignore spaces in formatted assignment statements),
+		" tabs not at the beginning of the line (but allow # for comments and % for mason),
+		" and trailing whitespace not followed by the cursor
+		match QuestionableWhitespace /^ \+\|\(^[%#]\?\t*\)\@<!\t\|[ \t]\+\(\%#\)\@!$/
+	endif
 endfunction
 
 
@@ -119,36 +119,43 @@ endfunction
 " toggle a comment for a line
 " see http://www.perlmonks.org/?node_id=561215 for more info
 function ToggleComment()
-  let comment_start = '#'
-  let comment_end   = ''
+	let comment_start = '#'
+	let comment_end   = ''
 
-  if &filetype == 'css'
-    let comment_start = '\/\* '
-    let comment_end   = ' \*\/'
-  endif
-  if &filetype == 'haskell'
-    let comment_start = '--'
-  endif
-  if &filetype == 'javascript'
-    let comment_start = '\/\/'
-  endif
-  if &filetype == 'sql'
-    let comment_start = '--'
-  endif
-  if &filetype == 'vim'
-    let comment_start = '"'
-  endif
+	if &filetype == 'cpp'
+		let comment_start = '\/\/'
+"		let comment_start = '\/\* '
+"		let comment_end   = ' \*\/'
+	endif
+	if &filetype == 'css'
+		let comment_start = '\/\* '
+		let comment_end   = ' \*\/'
+	endif
+	if &filetype == 'haskell'
+		let comment_start = '--'
+	endif
+	if &filetype == 'javascript'
+		let comment_start = '\/\/'
+	endif
+	if &filetype == 'sql'
+"		let comment_start = '--'
+		let comment_start = '\/\* '
+		let comment_end   = ' \*\/'
+	endif
+	if &filetype == 'vim'
+		let comment_start = '"'
+	endif
 
-  " if the comment start is at the beginning of the line and isn't followed
-  " by a space (i.e. the most likely form of an actual comment, to keep from
-  " uncommenting real comments
-  if getline('.') =~ ('^' . comment_start . '\( \w\)\@!')
-    execute 's/^' . comment_start . '//'
-    execute 's/' . comment_end . '$//'
-  else
-    s/^/\=comment_start/
-    s/$/\=comment_end/
-  endif
+	" if the comment start is at the beginning of the line and isn't followed
+	" by a space (i.e. the most likely form of an actual comment, to keep from
+	" uncommenting real comments
+	if getline('.') =~ ('^' . comment_start . '\( \w\)\@!')
+		execute 's/^' . comment_start . '//'
+		execute 's/' . comment_end . '$//'
+	else
+		execute 's/^/' . comment_start . '/'
+		execute 's/$/' . comment_end . '/'
+	endif
 endfunction
 map <silent> X :call ToggleComment()<cr>j
 
