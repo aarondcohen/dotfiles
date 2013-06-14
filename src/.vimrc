@@ -5,11 +5,12 @@ set nocompatible  " prevent vim from emulating vi bugs
 """"""""""""""""""""""""""""
 
 set autoindent    " indent based on the previous line
-"set copyindent     " copy indenting style of the line above
+"set copyindent    " copy indenting style of the line above
 set encoding=utf8 " Make vim utf8 aware and safe
-set shiftwidth=2  " Set visual mode selection indents to 2 spaces
+"set shiftwidth=2  " Set visual mode selection indents to 2 spaces
 set showmatch     " Show matching brackets.
-set tabstop=2     " Set tabs to 2 spaces
+"set softtabstop=2 " Set backspace on indents to 2 spaces
+"set tabstop=2     " Set tabs to 2 spaces
 
 " Turn off all bells
 set noerrorbells
@@ -41,10 +42,13 @@ set diffopt+=iwhite       " ignore whitespace in diffmode
 
 filetype indent plugin on " set indentation rules based on file type and enable filetype plugins
 
+autocmd BufNewFile,BufRead *.md,*.mh    set filetype=mason             " shutterstock convention for mason components
 autocmd BufNewFile,BufRead *.t          set filetype=perl
+autocmd BufNewFile,BufRead *.pp         set filetype=puppet
 autocmd BufNewFile,BufRead *.yaml,*.yml set filetype=yaml
 
-autocmd FileType yaml,yml set expandtab
+autocmd FileType * set shiftwidth=2 tabstop=2 noexpandtab
+autocmd FileType puppet,ruby,yaml,yml set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 
 """"""""""""""""""""""""""""
 " Status Line
@@ -61,7 +65,7 @@ set laststatus=2
 """"""""""""""""""""""""""""
 
 syntax on    " Turn syntax highlighting on
-set t_Co=256 " Set the terminal to 256 color mode
+"set t_Co=256 " Set the terminal to 256 color mode
 colorscheme aaron
 
 " so $VIMRUNTIME/syntax/hitest.vim to view syntax

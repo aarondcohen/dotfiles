@@ -5,6 +5,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f ~/.bash_custom ]; then
+	source ~/.bash_custom
+fi
+
 if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 	source ~/perl5/perlbrew/etc/bashrc
 fi
@@ -32,8 +36,7 @@ if [ -f "$HOME/bin/git-completion.bash" ]; then
 	PS1=$PS1'$(if __git_ps1 > /dev/null 2>&1; then __git_ps1 "[\[\033[01;35m\]%s\[\033[00m\]]"; fi;)'
 fi
 
-PS1=$PS1'
-'
+PS1=$PS1'\n'
 
 # User specific aliases and functions
 if [ -x /usr/bin/dircolors ]; then
