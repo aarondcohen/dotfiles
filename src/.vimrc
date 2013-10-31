@@ -163,3 +163,6 @@ function ToggleComment()
 endfunction
 map <silent> X :call ToggleComment()<cr>j
 
+if filereadable("~/.vim_custom")
+	so ~/.vim_custom
+endif
