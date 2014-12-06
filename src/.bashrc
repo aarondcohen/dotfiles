@@ -39,17 +39,32 @@ fi
 PS1=$PS1'\n'
 
 # User specific aliases and functions
+COLOR_COUNT=$(tput colors)
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls -px --group-directories-first --color=auto'
-	#alias dir='dir --color=auto'
-	#alias vdir='vdir --color=auto'
+fi
 
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+if [ $COLOR_COUNT -ge 8 ]; then
+	case "$OSTYPE" in
+		linux*)
+				alias ls='ls -px --group-directories-first --color=auto'
+				alias grep='grep --color=auto'
+				alias fgrep='fgrep --color=auto'
+				alias egrep='egrep --color=auto'
+			;;
+		*)
+			alias ls='LSCOLORS=ExFxgxdxCxbgbdCbCfEcEb ls -pxG'
+			;;
+	esac
 else
-	alias ls='ls -px --group-directories-first'
+	case "$OSTYPE" in
+		linux*)
+			alias ls='ls -px --group-directories-first'
+			;;
+		*)
+			alias ls='ls -px'
+			;;
+	esac
 fi
 
 extract () {
