@@ -5,6 +5,7 @@ set nocompatible  " prevent vim from emulating vi bugs
 """"""""""""""""""""""""""""
 
 set autoindent    " indent based on the previous line
+set backspace=indent,eol,start
 "set copyindent    " copy indenting style of the line above
 set encoding=utf8 " Make vim utf8 aware and safe
 "set shiftwidth=2  " Set visual mode selection indents to 2 spaces
