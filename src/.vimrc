@@ -43,10 +43,13 @@ set diffopt+=iwhite       " ignore whitespace in diffmode
 
 filetype indent plugin on " set indentation rules based on file type and enable filetype plugins
 
-autocmd BufNewFile,BufRead *.md,*.mh    set filetype=mason             " shutterstock convention for mason components
-autocmd BufNewFile,BufRead *.t          set filetype=perl
-autocmd BufNewFile,BufRead *.pp         set filetype=puppet
-autocmd BufNewFile,BufRead *.yaml,*.yml set filetype=yaml
+"autocmd BufNewFile,BufRead *.md,*.mh     set filetype=mason             " shutterstock convention for mason components
+autocmd BufNewFile,BufRead *.md          set filetype=markdown
+autocmd BufNewFile,BufRead *.t           set filetype=perl
+autocmd BufNewFile,BufRead *.pp          set filetype=puppet
+autocmd BufNewFile,BufRead *.cap,Capfile set filetype=ruby
+autocmd BufNewFile,BufRead *.jbuilder    set filetype=ruby
+autocmd BufNewFile,BufRead *.yaml,*.yml  set filetype=yaml
 
 autocmd FileType * set shiftwidth=2 tabstop=2 noexpandtab
 autocmd FileType puppet,ruby,yaml,yml set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
@@ -138,6 +141,11 @@ function ToggleComment()
 	endif
 	if &filetype == 'haskell'
 		let comment_start = '--'
+	endif
+	if &filetype == 'java'
+		let comment_start = '\/\/'
+"		let comment_start = '\/\* '
+"		let comment_end   = ' \*\/'
 	endif
 	if &filetype == 'javascript'
 		let comment_start = '\/\/'

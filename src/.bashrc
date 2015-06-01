@@ -91,6 +91,7 @@ extract () {
 
 # Aliases
 alias cad='cat > /dev/null'
+alias jcurl='curl -w "\n" -H "Content-type:application/json"'
 alias movie-info='mplayer -vo null -nosound -identify -frames 0'
 alias vi='echo "Save the headache and type vim"'
 
@@ -98,4 +99,3 @@ alias vi='echo "Save the headache and type vim"'
 export GIT_EDITOR=vim
 export GIT_PAGER='less -SFR'
 export LESS=''
-
