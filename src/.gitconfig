@@ -18,3 +18,5 @@
 	new          = green
 [push]
 	default = current
+[alias]
+	changes = diff --stat=200 master
