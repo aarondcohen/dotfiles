@@ -95,6 +95,12 @@ hi link gitconfigNone       Operators
 hi link gitconfigNumber     Constant
 hi link gitconfigSection    PreProc
 hi link gitconfigVariable   Variable
+hi link gitrebaseAction     Reserved
+hi link gitrebaseEdit       gitrebaseAction
+hi link gitrebaseFixup      gitrebaseAction
+hi link gitrebasePick       gitrebaseAction
+hi link gitrebaseReword     gitrebaseAction
+hi link gitrebaseSquash     gitrebaseAction
 
 " Vim
 hi link vimCommand   Reserved
