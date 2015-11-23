@@ -25,7 +25,7 @@ Getopt::Long::GetOptions(
 
 my $dotfiler = Dotfiler->new(
 	backup_directory => $backup_dir,
-	dot_symbol => '+DOT+',
+	dot_symbol => '.',
 	install_directory => $install_dir,
 	is_debug => $verbose,
 );
