@@ -49,11 +49,12 @@ autocmd BufNewFile,BufRead *.t           set filetype=perl
 autocmd BufNewFile,BufRead *.pp          set filetype=puppet
 autocmd BufNewFile,BufRead *.cap,Capfile set filetype=ruby
 autocmd BufNewFile,BufRead *.jbuilder    set filetype=ruby
+autocmd BufNewFile,BufRead *.slim        set filetype=slim
 autocmd BufNewFile,BufRead .vim_custom   set filetype=vim
 autocmd BufNewFile,BufRead *.yaml,*.yml  set filetype=yaml
 
 autocmd FileType * set shiftwidth=2 tabstop=2 noexpandtab
-autocmd FileType puppet,ruby,yaml set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+autocmd FileType eruby,puppet,ruby,slim,yaml set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 
 """"""""""""""""""""""""""""
 " Status Line
