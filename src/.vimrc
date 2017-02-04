@@ -18,6 +18,10 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+" Enable limited mousing
+set mouse=nicr
+set clipboard=unnamed
+
 """"""""""""""""""""""""""""
 " Search Options
 """"""""""""""""""""""""""""
@@ -43,6 +47,7 @@ set diffopt+=iwhite       " ignore whitespace in diffmode
 
 filetype indent plugin on " set indentation rules based on file type and enable filetype plugins
 
+autocmd BufNewFile,BufRead .bash_custom  set filetype=sh
 autocmd BufNewFile,BufRead *.jsx         set filetype=javascript
 autocmd BufNewFile,BufRead *.md          set filetype=markdown
 autocmd BufNewFile,BufRead *.t           set filetype=perl
