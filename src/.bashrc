@@ -97,5 +97,5 @@ alias vi='echo "Save the headache and type vim"'
 
 # Environment Variables for various programs
 export GIT_EDITOR=vim
-export GIT_PAGER='less -SFR'
+export GIT_PAGER='less -SFRX'
 export LESS=''

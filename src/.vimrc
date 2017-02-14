@@ -19,8 +19,8 @@ set novisualbell
 set t_vb=
 
 " Enable limited mousing
-set mouse=nicr
-set clipboard=unnamed
+"set mouse=nicr
+"set clipboard=unnamed
 
 """"""""""""""""""""""""""""
 " Search Options
@@ -47,13 +47,13 @@ set diffopt+=iwhite       " ignore whitespace in diffmode
 
 filetype indent plugin on " set indentation rules based on file type and enable filetype plugins
 
-autocmd BufNewFile,BufRead .bash_custom  set filetype=sh
 autocmd BufNewFile,BufRead *.jsx         set filetype=javascript
 autocmd BufNewFile,BufRead *.md          set filetype=markdown
 autocmd BufNewFile,BufRead *.t           set filetype=perl
 autocmd BufNewFile,BufRead *.pp          set filetype=puppet
 autocmd BufNewFile,BufRead *.cap,Capfile set filetype=ruby
 autocmd BufNewFile,BufRead *.jbuilder    set filetype=ruby
+autocmd BufNewFile,BufRead .bash_custom  set filetype=sh
 autocmd BufNewFile,BufRead *.slim        set filetype=slim
 autocmd BufNewFile,BufRead .vim_custom   set filetype=vim
 autocmd BufNewFile,BufRead *.yaml,*.yml  set filetype=yaml
@@ -111,6 +111,18 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 
 
+" Line Length
+"highlight ColorColumn ctermbg=10
+"set colorcolumn=81 " Show run on columns
+highlight LongLineSoftOverrun ctermbg=DarkGray
+highlight LongLineHardOverrun ctermbg=DarkRed
+"sy match LongLineHardOverrun /^.\{120}\zs.\+/
+"sy match LongLineSoftOverrun /^.\{80}\zs.\{1,40}/
+autocmd BufNewFile,BufRead * call matchadd('LongLineSoftOverrun', '\%>80v.\+')
+autocmd BufNewFile,BufRead * call matchadd('LongLineHardOverrun', '\%>120v.\+')
+
+
+
 " highlight questionable whitespace differently depending on whether
 " or not expandtab is set
 highlight QuestionableWhitespace ctermbg=green guibg=green
@@ -152,7 +164,6 @@ autocmd BufNewFile,BufRead * call HighlightWhitespace()
 
 
 
-
 function GetCommentChars()
 	let comment_start = '#'
 	let comment_end   = ''
@@ -191,6 +202,7 @@ function GetCommentChars()
 
 	return [comment_start, comment_end]
 endfunction
+
 
 
 " toggle a comment for a line
