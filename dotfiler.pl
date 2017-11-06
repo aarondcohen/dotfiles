@@ -3,9 +3,11 @@
 use strict;
 use warnings;
 
-use Dotfiler ();
 use FindBin ();
 use Getopt::Long ();
+
+use lib $FindBin::Bin;
+use Dotfiler ();
 
 my $backup_dir = "$FindBin::Bin/backup";
 my $install_dir = $ENV{HOME};
