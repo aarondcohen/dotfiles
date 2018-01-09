@@ -27,7 +27,7 @@ set t_vb=
 """"""""""""""""""""""""""""
 
 set hlsearch   " highlight the search term
-set ignorecase " search is case insensitive
+"set ignorecase " search is case insensitive
 "set smartcase  " override ignorecase if search contains uppercase characters
 set incsearch  " search as you type
 set wrapscan   " searches wrap around the end of the file
@@ -40,6 +40,17 @@ set wrapscan   " searches wrap around the end of the file
 set completeopt=          " don't show the menu and just cycle through the options
 set wildmode=longest,list " in ex mode, complete longest common string, then list alternatives (like bash)
 set diffopt+=iwhite       " ignore whitespace in diffmode
+
+""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""
+
+call plug#begin('~/.vim/plugged')
+"Plug 'altercation/vim-colors-solarized'
+Plug 'gregsexton/matchtag'
+Plug 'othree/yajs.vim'
+call plug#end()
+
 
 """"""""""""""""""""""""""""
 " Custom File Types

@@ -17,12 +17,14 @@ if &t_Co == '256'
 	hi Include    ctermfg=DarkGreen
 	hi PreProc    ctermfg=DarkGreen " 29 34
 	hi Todo       cterm=None ctermbg=Yellow ctermfg=Black
-	hi Type       cterm=Bold ctermfg=Cyan
+	hi Type       cterm=Bold ctermfg=DarkGreen
 
 	" Custom Groups
-	hi Operators cterm=none ctermfg=LightRed
-	hi Reserved  cterm=Bold ctermfg=220
-	hi Variable  cterm=none ctermfg=39 " 228 " White
+	hi Category     cterm=none ctermfg=DarkGreen
+	hi Operators    cterm=none ctermfg=LightRed
+	hi Property     cterm=none ctermfg=208
+	hi Reserved     cterm=Bold ctermfg=220
+	hi Variable     cterm=none ctermfg=39 " 228 " White
 
 	" Vim Features
 	hi DiffAdd    cterm=none ctermfg=Black ctermbg=Lightgreen
@@ -41,7 +43,7 @@ else
 	hi PreProc    ctermfg=Green
 	hi Statement  cterm=Bold ctermfg=White
 	hi Todo       cterm=None ctermbg=Yellow ctermfg=Black
-	hi Type       cterm=Bold ctermfg=Cyan
+	hi Type       cterm=Bold ctermfg=Green
 
 	" Custom Groups
 	hi Operators cterm=none ctermfg=White
@@ -67,6 +69,23 @@ hi link cppAccess     Reserved
 hi link cppExceptions Reserved
 hi link cppOperator   Reserved
 hi link cppStatement  Reserved
+
+" Javascript
+hi link javascriptClassExtends         Category
+hi link javascriptClassKeyword         Category
+hi link javascriptClassName            Variable " Type
+hi link javascriptClassSuperName       Variable " Type
+hi link javascriptDebugger             PreProc
+hi link javascriptExceptions           Reserved
+hi link javascriptIdentifier           Keyword
+hi link javascriptIdentifierName       Variable
+hi link javascriptObjectLabel          Property
+hi link javascriptOpSymbols            Operators
+hi link javascriptOperator             Keyword
+hi link javascriptReserved             Reserved
+hi link javascriptReturn               Reserved
+hi link javascriptTemplateSubstitution Property
+hi link javascriptVariable             Reserved
 
 " Perl
 hi link perlConditional              Reserved
@@ -105,6 +124,7 @@ hi link gitrebaseSquash     gitrebaseAction
 " Vim
 hi link vimCommand   Reserved
 hi link vimHiKeyList Operators
+hi link vimHiTerm    Variable
 hi link vimHighlight Reserved
 hi link vimNumber    NoVarConstant
 hi link vimOper      Operators
