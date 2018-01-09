@@ -20,3 +20,4 @@
 	default = current
 [alias]
 	changes = diff --stat=200 master
+	safe-push = push --force-with-lease
