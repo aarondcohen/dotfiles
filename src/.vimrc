@@ -69,6 +69,7 @@ autocmd BufNewFile,BufRead *.slim        set filetype=slim
 autocmd BufNewFile,BufRead .vim_custom   set filetype=vim
 autocmd BufNewFile,BufRead *.yaml,*.yml  set filetype=yaml
 
+set shiftwidth=2 tabstop=2 noexpandtab " when there's no file type
 autocmd FileType * set shiftwidth=2 tabstop=2 noexpandtab
 autocmd FileType eruby,puppet,ruby,slim,yaml set shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 
