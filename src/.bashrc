@@ -13,6 +13,15 @@ if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 	source ~/perl5/perlbrew/etc/bashrc
 fi
 
+for language_shim in jenv nodenv pyenv rbenv; do
+	if [ -x /usr/local/bin/$language_shim ]\
+	&& [[ $PATH != *.$language_shim* ]]
+	then
+		export PATH="$HOME/.$language_shim/bin:$PATH"
+		eval "$($language_shim init -)"
+	fi
+done
+
 # History Options
 HISTCONTROL=ignoredups:ignoreboth:ignorespace
 HISTSIZE=1000
