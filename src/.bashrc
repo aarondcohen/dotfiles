@@ -13,7 +13,7 @@ if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 	source ~/perl5/perlbrew/etc/bashrc
 fi
 
-for language_shim in jenv nodenv pyenv rbenv; do
+for language_shim in jenv nodenv pyenv rbenv scalaenv; do
 	if [ -x /usr/local/bin/$language_shim ]\
 	&& [[ $PATH != *.$language_shim* ]]
 	then
@@ -21,6 +21,12 @@ for language_shim in jenv nodenv pyenv rbenv; do
 		eval "$($language_shim init -)"
 	fi
 done
+
+if [ -x /opt/homebrew/bin/brew ]\
+&& [[ $PATH != */opt/homebrew/bin/* ]]
+then
+	export PATH="/opt/homebrew/bin/:$PATH"
+fi
 
 # History Options
 HISTCONTROL=ignoredups:ignoreboth:ignorespace
@@ -102,6 +108,7 @@ extract () {
 alias cad='cat > /dev/null'
 alias jcurl='curl -w "\n" -H "Content-type:application/json"'
 alias movie-info='mplayer -vo null -nosound -identify -frames 0'
+alias now-iso8601='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias vi='echo "Save the headache and type vim"'
 
 # Environment Variables for various programs
