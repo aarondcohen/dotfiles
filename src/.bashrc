@@ -5,28 +5,28 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-if [ -f ~/.bash_custom ]; then
-	source ~/.bash_custom
+if [ -x /opt/homebrew/bin/brew ]\
+&& [[ $PATH != */opt/homebrew/bin/* ]]
+then
+	# Prepend PATH to allow overrides of system tools
+	export PATH="/opt/homebrew/bin/:$PATH"
 fi
 
 if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 	source ~/perl5/perlbrew/etc/bashrc
 fi
 
-for language_shim in jenv nodenv pyenv rbenv scalaenv; do
-	if [ -x /usr/local/bin/$language_shim ]\
+for language_shim in goenv jenv nodenv pyenv rbenv scalaenv; do
+	if { false \
+		|| [ -x /usr/local/bin/$language_shim ] \
+		|| [ -x /opt/homebrew/bin/$language_shim ] \
+	; }\
 	&& [[ $PATH != *.$language_shim* ]]
 	then
-		export PATH="$HOME/.$language_shim/bin:$PATH"
 		eval "$($language_shim init -)"
+		export PATH="$PATH:$HOME/.$language_shim/bin"
 	fi
 done
-
-if [ -x /opt/homebrew/bin/brew ]\
-&& [[ $PATH != */opt/homebrew/bin/* ]]
-then
-	export PATH="/opt/homebrew/bin/:$PATH"
-fi
 
 # History Options
 HISTCONTROL=ignoredups:ignoreboth:ignorespace
@@ -115,3 +115,8 @@ alias vi='echo "Save the headache and type vim"'
 export GIT_EDITOR=vim
 export GIT_PAGER='less -SFRX'
 export LESS=''
+
+# Run custom overrides
+if [ -f ~/.bash_custom ]; then
+	source ~/.bash_custom
+fi
