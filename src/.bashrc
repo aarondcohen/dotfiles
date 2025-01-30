@@ -8,12 +8,17 @@ fi
 if [ -x /opt/homebrew/bin/brew ]\
 && [[ $PATH != */opt/homebrew/bin/* ]]
 then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 	# Prepend PATH to allow overrides of system tools
 	export PATH="/opt/homebrew/bin/:$PATH"
 fi
 
 if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 	source ~/perl5/perlbrew/etc/bashrc
+fi
+
+if [ -f ~/.cargo/env ]; then
+	source ~/.cargo/env
 fi
 
 for language_shim in goenv jenv nodenv pyenv rbenv scalaenv; do
@@ -112,8 +117,10 @@ alias now-iso8601='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias vi='echo "Save the headache and type vim"'
 
 # Environment Variables for various programs
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export GIT_EDITOR=vim
 export GIT_PAGER='less -SFRX'
+export HOMEBREW_NO_ENV_HINTS=1
 export LESS=''
 
 # Run custom overrides
